@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html manifest="/manifest" type="text/cache-manifest">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0" />
+    <title>Museo del Tessuto - Facewall - Prato</title>   
+    <link href="/www/css/main.css" rel="stylesheet" type="text/css" />
+    <script src="/www/js/lib/modernizr-2.6.2.js"></script>
+</head>
+<body ng-app="fwApp">
+
+    <ui-view></ui-view>
+
+    <script src="/www/js/lib/angular.js"></script>
+    <script src="/www/js/lib/angular-ui-router.js"></script>
+    <script src="/www/js/lib/angular-cache.js"></script>
+    <script src="/www/js/lib/angular-touch.js"></script>
+    <script src="/www/js/lib/lodash.js"></script>
+
+    <!-- angular app-->
+    <script src="/www/app/app.js"></script>
+    <script src="/www/app/services/catalog-srv.js"></script>
+    <script src="/www/app/services/hubproxy-srv.js"></script>
+    <script src="/www/app/controllers/main-ctrl.js"></script>
+    <script src="/www/app/controllers/modal-ctrl.js"></script>
+    <script src="/www/app/directives/scrollAnimation-dir.js"></script>
+    <script src="/www/app/directives/logoSvg-dir.js"></script>
+    <script src="/www/app/directives/closeModal-dir.js"></script>
+    <script src="/www/app/directives/videothumb-dir.js"></script>
+    <script src="/www/app/directives/slide-dir.js"></script>
+    <script src="/www/app/directives/click-dir.js"></script>
+
+    <!-- jQuery libs -->
+    <script src="/www/js/lib/jquery-2.1.3.js"></script>
+    <script src="/www/js/lib/jquery.signalR-2.2.0.js"></script>
+    <script src="/signalr/hubs"></script>
+    <script src="/www/js/module/hub-module.js"></script>
+
+    <script>        
+        window.addEventListener('load', function () {
+
+            window.applicationCache.addEventListener('updateready', function (event) {
+                console.log('updateready');
+                window.location.reload(true);
+            }, false);
+
+            function handleCacheEvent(event) {
+                console.log(event);
+            }
+
+            function handleCacheError(event) {
+                var str = "There are " + arguments.length + " arguments.\n";
+                for (var key in event) {
+                    str += key + ":" + event[key] + "\n";
+                }
+                console.error(event, str);                
+            }
+
+            window.applicationCache.addEventListener('cached', handleCacheEvent, false);
+
+            window.applicationCache.addEventListener('noupdate', handleCacheEvent, false);
+
+            window.applicationCache.addEventListener('checking', handleCacheEvent, false);
+
+            window.applicationCache.addEventListener('downloading', handleCacheEvent, false);
+
+            window.applicationCache.addEventListener('obsolete', handleCacheEvent, false);
+
+            window.applicationCache.addEventListener('progress', handleCacheEvent, false);
+
+            window.applicationCache.addEventListener('error', handleCacheError, false);
+
+        });
+    </script>
+
+</body>
+</html>

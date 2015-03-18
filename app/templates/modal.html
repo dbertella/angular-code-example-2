@@ -1,0 +1,26 @@
+﻿<!--<div class="animate-in">-->
+    <div class="category" ng-class="'category-' + video.CategoryID">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 341">
+            <polygon points="256,170.5 0,341 0,0 512,0 " />
+        </svg>
+    </div>
+
+    <div class="icon-svg close-modal" ng-click="closeModal()" click-animation close-modal></div>
+<!--</div>-->
+<div class="video-info">
+    <div class="col col-1-4 info animate-in">
+        <section>
+            <h3>{{ video.Title }}</h3>
+            <p><em class="grey">{{ video.Abstract }}</em></p>
+        </section>
+        <footer>
+            <div ng-click="startVideo(video.ID)" ng-class="'play-' + video.ID">
+                <img ng-src="/www/img/play_{{ currentCulture }}.png" alt="" />
+            </div>
+
+        </footer>
+    </div>
+    <div class="col col-3-4" ex-slide swipe-left="goToVideo(+1)" swipe-right="goToVideo(-1)">
+        <img ng-src="/media/image/thumb/768x512/{{ video.ImageUrl }}" alt="{{video.Title}}" />
+    </div>
+</div>
