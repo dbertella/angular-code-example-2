@@ -14,7 +14,8 @@ app.directive('exSlide', function ($timeout, $state) {
                 scope.$apply();
                 var img = angular.element(document.querySelector('.animated')).find('img');
                 if (img) {
-                    img.css('-webkit-transform', 'translate3d(0, 0, 0) scale(1)');                            
+                    img.css('-webkit-transform', 'translate3d(0, 0, 0) scale(1)'); 
+                    img.css('transform', 'translate3d(0, 0, 0) scale(1)');                             
                     $timeout(function () {
                         angular.element(document.querySelectorAll('.animate-content')).removeClass('animated');                        
                     }, 300);
@@ -31,8 +32,9 @@ app.directive('exSlide', function ($timeout, $state) {
             var opacity = 1 - Math.abs(e.targetTouches[0].pageX - scope.coord.startX) / 256;                      
 
             element.find('img').css({            
-                '-webkit-transition': 'none',
-                '-webkit-transform': 'translate3d(' + translateLeft + 'px, 0, 0)',                         
+                'transition': 'none',
+                '-webkit-transform': 'translate3d(' + translateLeft + 'px, 0, 0)', 
+                'transform': 'translate3d(' + translateLeft + 'px, 0, 0)',                         
                 'opacity': opacity
             });
         };
@@ -62,8 +64,9 @@ app.directive('exSlide', function ($timeout, $state) {
             }            
             
             element.find('img').css({
-                '-webkit-transition': 'transform 0.7s linear, opacity 0.3s linear',                
+                'transition': 'transform 0.7s linear, opacity 0.3s linear',                
                 '-webkit-transform': 'translate3d(' + translateLeft + ', 0, 0)',
+                'transform': 'translate3d(' + translateLeft + ', 0, 0)',
                 'opacity': opacity
             });
 
